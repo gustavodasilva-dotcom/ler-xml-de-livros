@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LerXML.Business
 {
     public interface IPastaBO
     {
-        Task<bool> VerificarPasta();
+        bool VerificarPasta();
 
-        Task LerArquivo(bool retorno);
+        Task LerArquivo();
     }
 }
