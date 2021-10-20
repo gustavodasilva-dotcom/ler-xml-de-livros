@@ -1,5 +1,5 @@
 using LerXML.Business;
-using LerXML.Repository;
+using LerXML.Connections;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -19,7 +19,7 @@ namespace LerXML
                     services.AddHostedService<Worker>();
 
                     services.AddSingleton<IPastaBO, PastaBO>();
-                    services.AddSingleton<IPastaRepository, PastaRepository>();
+                    services.AddSingleton<IPastaConnection, PastaConnection>();
                 });
     }
 }

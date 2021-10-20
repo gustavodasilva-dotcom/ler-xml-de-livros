@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4VcMyYBc1YPQMXu3EBJDn2RsOa/ZDWCuv+OnMOG4iOTLQY3Q95sRZaNclvc4WKmvBy2wPDDc/Js3e7ppwGLxkQ==",
+  "dgSpecHash": "D/b37wCjk4LEktIOAI6Jy4EfT4x7Lz7hNk53eJYROiTXgaoP63/xkZf5cGkDH2g/VAlU9t5kUyw8E0/YoQRWww==",
   "success": true,
   "projectFilePath": "C:\\Users\\gusta\\source\\repos\\LerXML\\LerXML\\LerXML.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Users\\gusta\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\restsharp\\106.12.0\\restsharp.106.12.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

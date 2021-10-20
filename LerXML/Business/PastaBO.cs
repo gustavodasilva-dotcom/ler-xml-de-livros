@@ -1,7 +1,6 @@
 ﻿using LerXML.Entities;
-using LerXML.Repository;
+using LerXML.Connections;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
@@ -14,15 +13,15 @@ namespace LerXML.Business
 
         private readonly string caminhoArquivoProcessado;
 
-        private readonly IPastaRepository _pastaRepository;
+        private readonly IPastaConnection _pastaConnection;
 
-        public PastaBO(IPastaRepository pastaRepository)
+        public PastaBO(IPastaConnection pastaConnection)
         {
             caminhoArquivo = @"C:\XMLFiles\";
 
             caminhoArquivoProcessado = @"C:\XMLFiles\Processados\";
 
-            _pastaRepository = pastaRepository;
+            _pastaConnection = pastaConnection;
         }
 
         public bool VerificarPasta()
@@ -71,6 +70,8 @@ namespace LerXML.Business
                         else if (xml.NodeType == XmlNodeType.Element && xml.Name == "description")
                         {
                             descricao = xml.ReadElementContentAsString();
+
+                            descricao = descricao.Replace("\n", string.Empty);
                         }
 
                         if (
@@ -107,14 +108,23 @@ namespace LerXML.Business
 
         private async Task InserirLivro(Livro livro)
         {
-            await _pastaRepository.InserirLivro(livro);
+            try
+            {
+                var response = await _pastaConnection.InserirLivro(livro);
+
+                Console.WriteLine("Retorno da integração: {0}", response.StatusCode);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void MoverArquivoParaProcessados(string arquivo)
         {
             string nomeOrigemArquivo = arquivo.Split("\\").GetValue(2).ToString();
 
-            var nomeArquivo = nomeOrigemArquivo + Convert.ToString(DateTime.Now.ToString("yyyy''MM''dd'T'HH''mm''ss"));
+            var nomeArquivo = nomeOrigemArquivo + "." + Convert.ToString(DateTime.Now.ToString("yyyy''MM''dd'T'HH''mm''ss"));
 
             File.Move(arquivo, Path.Combine(caminhoArquivoProcessado, nomeArquivo));
         }

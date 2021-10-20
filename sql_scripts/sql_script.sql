@@ -47,8 +47,6 @@ ALTER PROCEDURE [dbo].[uspInserirLivro]
 	,@Preco				nvarchar(255)
 	,@DataPublicacao	nvarchar(255)
 	,@Descricao			nvarchar(255)
-
-	--uspInserirLivro 'Rowling, J.K.', 'Harry Potter e a Pedra Filosofal', 'Ficção', '22.50', '2021-08-12', 'Teste'
 AS
 	BEGIN
 

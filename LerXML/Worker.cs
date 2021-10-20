@@ -26,9 +26,7 @@ namespace LerXML
             {
                 try
                 {
-                    var retorno = VerificarPasta();
-
-                    if (retorno)
+                    if (VerificarPasta())
                     {
                         await LerArquivo();
                     }
@@ -45,30 +43,37 @@ namespace LerXML
 
         private bool VerificarPasta()
         {
-            string mensagem;
-            bool resultadoLogico;
-            
-            var resultado = _pasta.VerificarPasta();
-
-            if (resultado)
+            try
             {
-                mensagem = "Há arquivos na pasta XMLFiles";
-                resultadoLogico = true;
+                var resultado = _pasta.VerificarPasta();
+
+                if (resultado)
+                {
+                    _logger.LogInformation("Há arquivos na pasta XMLFiles");
+
+                    return true;
+                }
+
+                _logger.LogInformation("Não há arquivos na pasta XMLFiles");
+
+                return false;
             }
-            else
+            catch (Exception)
             {
-                mensagem = "Não há arquivos na pasta XMLFiles";
-                resultadoLogico = false;
+                throw;
             }
-
-            _logger.LogInformation(mensagem);
-
-            return resultadoLogico;
         }
 
         private async Task LerArquivo()
         {
-            await _pasta.LerArquivo();
+            try
+            {
+                await _pasta.LerArquivo();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
