@@ -52,69 +52,19 @@ AS
 
 		SET NOCOUNT ON;
 
-		DECLARE @Mensagem nvarchar(255);
-
-		IF (SELECT 1 FROM LIVROS WHERE LIVROS_TITULO_STR = @Titulo AND LIVROS_PRECO_FLOAT = @Preco) IS NULL
-			BEGIN
-
-				BEGIN TRANSACTION;
-
-					BEGIN TRY
-
-						INSERT INTO LIVROS
-						VALUES
-						(
-							 @Autor
-							,@Titulo
-							,@Genero
-							,CAST(@Preco AS FLOAT(2))
-							,CAST(@DataPublicacao AS DATE)
-							,@Descricao
-							,GETDATE()
-						);
-
-						SET @Mensagem = 'Livro cadastrado com sucesso.';
-
-					END TRY
-
-					BEGIN CATCH
-
-						IF @@TRANCOUNT > 0
-							ROLLBACK TRANSACTION;
-
-					END CATCH;
-
-				IF @@TRANCOUNT > 0
-					COMMIT TRANSACTION;
-
-			END;
-
-		ELSE
-
-			BEGIN
-
-				SET @Mensagem = 'Já existe um livro cadastrado com os dados informados.';
-
-			END;
-
-
 		BEGIN TRANSACTION;
 
 			BEGIN TRY
 
-				INSERT INTO LOGS
+				INSERT INTO LIVROS
 				VALUES
 				(
-					 CONCAT
-					 (
-						'Autor: ', @Autor, ';',
-						'Titulo: ', @Titulo, ';',
-						'Genero: ', @Genero, ';',
-						'Preco: ', @Preco, ';',
-						'DataPublicacao: ', @DataPublicacao, ';',
-						'Descricao: ', @Descricao
-					 )
-					,@Mensagem
+					 @Autor
+					,@Titulo
+					,@Genero
+					,CAST(@Preco AS FLOAT(2))
+					,CAST(@DataPublicacao AS DATE)
+					,@Descricao
 					,GETDATE()
 				);
 
